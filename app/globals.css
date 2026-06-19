@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: "tnum" 1;
+}
+
+::selection {
+  background: #eaff00;
+  color: #FAF9F6;
+}
+
+@layer utilities {
+  .ticket-num {
+    font-family: var(--font-mono);
+    font-feature-settings: "tnum" 1;
+  }
+
+  .input {
+    width: 100%;
+    border-radius: 0.375rem;
+    border: 1px solid #E4E1D8;
+    background-color: #FAF9F6;
+    padding: 0.7rem 0.875rem;
+    font-size: 0.9rem;
+    color: #14171C;
+    transition: border-color 0.15s ease;
+  }
+
+  .input:focus {
+    outline: none;
+    border-color: #eaff00;
+  }
+
+  .input::placeholder {
+    color: #5B6470;
+    opacity: 0.6;
+  }
+}
+.input {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #facc15;
+  box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.15);
+}
+
+.input:disabled {
+  background: #f9fafb;
+  cursor: not-allowed;
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.whatsapp-float {
+  animation: float 3s ease-in-out infinite;
+}
