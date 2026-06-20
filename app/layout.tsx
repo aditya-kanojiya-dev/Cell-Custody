@@ -1,30 +1,58 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFab from "@/components/WhatsAppFab";
 
-const display = localFont({
-  src: "../public/fonts/SpaceGrotesk-Regular.ttf",
+const display = Space_Grotesk({
+  subsets: ["latin"],
   variable: "--font-display",
+  weight: ["500", "700"],
 });
 
-const body = localFont({
-  src: "../public/fonts/Inter-Regular.ttf",
+const body = Inter({
+  subsets: ["latin"],
   variable: "--font-body",
+  weight: ["400", "500", "600"],
 });
 
-const mono = localFont({
-  src: "../public/fonts/JetBrainsMono-Regular.ttf",
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
   variable: "--font-mono",
+  weight: ["500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Cell Custody — Doorstep Mobile Repair in Nagpur",
+  metadataBase: new URL("https://www.cellcustody.in"),
+  title: {
+    default: "Cell Custody — Doorstep Mobile Repair in Nagpur",
+    template: "%s | Cell Custody",
+  },
   description:
-    "Instant doorstep mobile repair in Nagpur. Lowest prices, guaranteed repair, technician at your door. Book your slot now!",
+    "Instant doorstep mobile repair in Nagpur. Lowest prices, guaranteed repair, technician at your door. Book your slot now.",
+  openGraph: {
+    title: "Cell Custody — Doorstep Mobile Repair in Nagpur",
+    description:
+      "Instant doorstep mobile repair in Nagpur. Lowest prices, guaranteed repair, technician at your door.",
+    url: "https://www.cellcustody.in",
+    siteName: "Cell Custody",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cell Custody — Doorstep Mobile Repair in Nagpur",
+    description:
+      "Instant doorstep mobile repair in Nagpur. Lowest prices, guaranteed repair, technician at your door.",
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
+
+export const viewport = {
+  themeColor: "#FF7A1A",
 };
 
 export default function RootLayout({

@@ -42,7 +42,7 @@ export default function ReviewWall() {
   }, [paused]);
 
   return (
-    <section className="relative bg-gray-50 py-16 sm:py-20 lg:py-24 overflow-hidden">
+    <section id="reviews" className="relative bg-gray-50 py-16 sm:py-20 lg:py-24 overflow-hidden">
       {/* Header */}
       <div className="mx-auto max-w-3xl px-4 sm:px-6 text-center">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">

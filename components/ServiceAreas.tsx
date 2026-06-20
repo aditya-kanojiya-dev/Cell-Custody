@@ -5,7 +5,6 @@ import {
   MapPin,
   ShieldCheck,
   Clock3,
-  CheckCircle2,
 } from "lucide-react";
 
 type Location = {
@@ -39,185 +38,156 @@ const locations: Location[] = [
 
 export default function ServiceAreas() {
   return (
-    <section className="bg-white py-24">
-      <div className="mx-auto max-w-7xl px-5">
-        <div className="mx-auto max-w-3xl text-center">
+    <section className="bg-white py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-4 md:px-5">
+
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="mx-auto max-w-3xl text-center"
+        >
           <span className="inline-flex rounded-full bg-yellow-100 px-4 py-2 text-sm font-semibold text-yellow-700">
             Service Coverage
           </span>
 
-          <h2 className="mt-5 text-4xl font-bold text-gray-900 md:text-5xl">
+          <h2 className="mt-5 text-3xl font-bold text-gray-900 md:text-5xl">
             Doorstep Mobile Repair Across Nagpur
           </h2>
 
-          <p className="mt-5 text-lg text-gray-600">
-            Our technicians travel across Nagpur every day. From central
-            Nagpur to residential and outer city areas, we reach homes,
-            offices, hostels, shops, and workplaces across the city.
+          <p className="mt-5 text-base text-gray-600 md:text-lg">
+            Our technicians travel across Nagpur every day and reach homes,
+            offices and workplaces across the city.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="mt-16 rounded-[36px] border border-gray-200 bg-gradient-to-br from-yellow-50 via-white to-white p-6 shadow-2xl md:p-10">
-          <div className="relative h-[550px] overflow-hidden rounded-[28px] border border-gray-100 bg-[#f8f7f2]">
-            <div
-              className="absolute inset-0 opacity-20"
-              style={{
-                backgroundImage:
-                  "url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/f63607c80d0928994b92beb1d1f0aed9c6768dea.jpg')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                filter: "grayscale(1) contrast(0.75) brightness(1.2)",
+        {/* Map */}
+        <div className="mt-10 rounded-[32px] border border-gray-200 bg-gradient-to-br from-yellow-50 to-white p-4 md:p-8 shadow-2xl">
+
+          <div className="relative h-[420px] md:h-[620px] overflow-hidden rounded-[28px]">
+
+            {/* Animated map */}
+            <motion.div
+              className="absolute inset-0"
+              animate={{
+                scale: [1, 1.12, 1],
               }}
-            />
-
-            <div className="absolute inset-0 bg-white/35" />
-
-            <div
-              className="absolute inset-0 opacity-[0.06]"
-              style={{
-                backgroundImage:
-                  "linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg,#000 1px, transparent 1px)",
-                backgroundSize: "48px 48px",
+              transition={{
+                duration: 12,
+                repeat: Infinity,
+                ease: "easeInOut",
               }}
-            />
+            >
+              <div
+                className="absolute inset-0"
+                style={{
+                  backgroundImage:
+                    "url('https://pplx-res.cloudinary.com/image/upload/pplx_search_images/f63607c80d0928994b92beb1d1f0aed9c6768dea.jpg')",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  filter:
+                    "grayscale(1) contrast(.8) brightness(1.15)",
+                }}
+              />
 
-            {locations.map((location, index) => {
-              const small = [
-                "Shankar Nagar",
-                "Seminary Hills",
-                "Jaripatka",
-                "Mankapur",
-                "Jaitala",
-                "Gokulpeth",
-              ].includes(location.name);
+              <div className="absolute inset-0 bg-white/35" />
 
-              return (
-                <motion.div
-                  key={location.name}
-                  className="absolute z-20"
-                  style={{
-                    left: `${location.x}%`,
-                    top: `${location.y}%`,
-                    transform: "translate(-50%, -50%)",
-                  }}
-                  initial={{
-                    opacity: 0,
-                    scale: 0,
-                    y: 30,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                    y: 0,
-                  }}
-                  transition={{
-                    delay: index * 0.08,
-                    duration: 0.55,
-                    type: "spring",
-                    stiffness: 260,
-                    damping: 18,
-                  }}
-                >
-                  <div className="flex flex-col items-center">
-                    <motion.div
-                      className="relative"
-                      animate={{
-                        y: [0, -4, 0],
-                      }}
-                      transition={{
-                        duration: 2.5,
-                        repeat: Infinity,
-                        delay: index * 0.15,
-                      }}
-                    >
-                      {/* Ripple */}
-                      <motion.span
-                        className="absolute inset-0 rounded-full bg-yellow-400"
-                        initial={{
-                          scale: 0,
-                          opacity: 0.6,
-                        }}
-                        animate={{
-                          scale: [0, 2.5],
-                          opacity: [0.5, 0],
-                        }}
-                        transition={{
-                          duration: 1.2,
-                          delay: index * 0.08,
-                        }}
+              <div
+                className="absolute inset-0 opacity-[0.08]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg,#000 1px, transparent 1px)",
+                  backgroundSize: "42px 42px",
+                }}
+              />
+            </motion.div>
+
+            {/* PINS */}
+            {locations.map((location, index) => (
+              <motion.div
+                key={location.name}
+                className="absolute z-30"
+                style={{
+                  left: `${location.x}%`,
+                  top: `${location.y}%`,
+                  transform: "translate(-50%,-50%)",
+                }}
+                initial={{
+                  opacity: 0,
+                  scale: 0,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  scale: 1,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  delay: index * 0.04,
+                  type: "spring",
+                  stiffness: 220,
+                }}
+              >
+                <div className="flex flex-col items-center">
+
+                  <motion.div
+                    animate={{
+                      y: [0, -5, 0],
+                    }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 2.4,
+                      delay: index * 0.12,
+                    }}
+                    className="relative"
+                  >
+                    {/* Ripple */}
+                    <span className="absolute inset-0 animate-ping rounded-full bg-yellow-400 opacity-25" />
+
+                    {/* Pin */}
+                    <div className="relative flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-full bg-black shadow-xl">
+                      <MapPin
+                        size={14}
+                        className="text-yellow-400 md:h-4 md:w-4"
                       />
+                    </div>
+                  </motion.div>
 
-                      {/* Continuous pulse */}
-                      <span className="absolute inset-0 animate-ping rounded-full bg-yellow-400 opacity-20" />
+                  {/* Labels only desktop */}
+                  <span className="mt-2 hidden rounded-full bg-white px-3 py-1 text-xs font-semibold shadow md:block">
+                    {location.name}
+                  </span>
 
-                      <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-black shadow-xl">
-                        <MapPin size={16} className="text-yellow-400" />
-                      </div>
-                    </motion.div>
+                </div>
+              </motion.div>
+            ))}
 
-                    <motion.span
-                      initial={{
-                        opacity: 0,
-                        scale: 0.8,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        scale: 1,
-                      }}
-                      transition={{
-                        delay: index * 0.08 + 0.15,
-                        duration: 0.3,
-                      }}
-                      className={[
-                        "mt-2 rounded-full bg-white px-3 py-1.5 text-center font-semibold text-gray-900 shadow-lg",
-                        small ? "text-[11px]" : "text-sm",
-                      ].join(" ")}
-                    >
-                      {location.name}
-                    </motion.span>
-                  </div>
-                </motion.div>
-              );
-            })}
-
-            <div className="absolute left-6 top-6 rounded-2xl border border-gray-100 bg-white p-5 shadow-xl">
+            {/* Legend */}
+            <div className="absolute left-4 top-4 z-40 rounded-xl bg-white px-4 py-3 shadow-lg">
               <div className="flex items-center gap-2">
-                <MapPin size={18} className="text-yellow-500" />
-                <span className="font-semibold text-gray-900">
-                  Service Area
+                <MapPin
+                  size={16}
+                  className="text-yellow-500"
+                />
+                <span className="text-sm font-semibold">
+                  Active Coverage
                 </span>
               </div>
-              <p className="mt-1 text-xs text-gray-600">
-                Active across Nagpur
-              </p>
             </div>
+
           </div>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <Stat
-              icon={<MapPin size={22} />}
-              value="20+"
-              label="Coverage Zones"
-            />
+          {/* Stats */}
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
-            <Stat
-              icon={<Clock3 size={22} />}
-              value="30-45m"
-              label="Average Arrival"
-            />
+            <Stat icon={<MapPin />} value="20+" label="Coverage Zones" />
+            <Stat icon={<Clock3 />} value="30–45m" label="Arrival Time" />
+            <Stat icon={<ShieldCheck />} value="500+" label="Repairs" />
+            <Stat icon={<ShieldCheck />} value="6 Months" label="Warranty" />
 
-            <Stat
-              icon={<ShieldCheck size={22} />}
-              value="500+"
-              label="Repairs Completed"
-            />
-
-            <Stat
-              icon={<ShieldCheck size={22} />}
-              value="6 Months"
-              label="Warranty Support"
-            />
           </div>
+
         </div>
       </div>
     </section>
@@ -234,16 +204,21 @@ function Stat({
   label: string;
 }) {
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-      <div className="mb-3 text-yellow-500">{icon}</div>
+    <motion.div
+      whileHover={{ y: -5 }}
+      className="rounded-2xl border bg-white p-5 shadow-sm"
+    >
+      <div className="mb-3 text-yellow-500">
+        {icon}
+      </div>
 
-      <div className="text-3xl font-bold text-gray-900">
+      <div className="text-3xl font-bold">
         {value}
       </div>
 
       <div className="mt-1 text-sm text-gray-600">
         {label}
       </div>
-    </div>
+    </motion.div>
   );
 }

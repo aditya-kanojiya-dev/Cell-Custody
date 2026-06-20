@@ -12,7 +12,7 @@ export default function BookPage() {
   return (
     <main className="bg-paper">
       <div className="mx-auto max-w-5xl px-5 py-14 md:px-8 md:py-20">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-yellow-400">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-yellow-400-text">
           Book Now
         </p>
         <h1 className="mt-2 font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">
@@ -38,7 +38,7 @@ export default function BookPage() {
                   href={contact.phoneHref}
                   className="flex items-center gap-2 text-sm font-semibold text-ink"
                 >
-                  <Phone size={16} className="text-amber" />
+                  <Phone size={16} className="text-yellow-400-text" />
                   {contact.phoneDisplay}
                 </a>
                 <a

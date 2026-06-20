@@ -1,3 +1,18 @@
+import {
+  Smartphone,
+  Battery,
+  Droplets,
+  Camera,
+  PlugZap,
+  Mic,
+  Cpu,
+  Wrench,
+} from "lucide-react";
+
+/* =========================
+   SERVICES
+========================= */
+
 export type Service = {
   slug: string;
   name: string;
@@ -5,6 +20,7 @@ export type Service = {
   startingPrice: number;
   turnaround: string;
   description: string;
+  icon: React.ElementType;
 };
 
 export const services: Service[] = [
@@ -14,6 +30,7 @@ export const services: Service[] = [
     ticketCode: "SCR-01",
     startingPrice: 999,
     turnaround: "45 min",
+    icon: Smartphone,
     description:
       "Cracked glass, dead pixels, or unresponsive touch — replaced at your door with tested display units.",
   },
@@ -23,6 +40,7 @@ export const services: Service[] = [
     ticketCode: "BAT-02",
     startingPrice: 599,
     turnaround: "30 min",
+    icon: Battery,
     description:
       "Phone dying by noon? Swapped with a fresh battery rated to original capacity.",
   },
@@ -32,6 +50,7 @@ export const services: Service[] = [
     ticketCode: "CHG-03",
     startingPrice: 399,
     turnaround: "30 min",
+    icon: PlugZap,
     description:
       "Loose connection, slow charge, or no charge at all — cleaned or replaced on the spot.",
   },
@@ -41,6 +60,7 @@ export const services: Service[] = [
     ticketCode: "BGL-04",
     startingPrice: 799,
     turnaround: "40 min",
+    icon: Droplets,
     description:
       "Shattered back panel replaced without disturbing your camera or wireless charging coil.",
   },
@@ -50,6 +70,7 @@ export const services: Service[] = [
     ticketCode: "CAM-05",
     startingPrice: 699,
     turnaround: "35 min",
+    icon: Camera,
     description:
       "Blurry shots, black screen on camera open, or cracked lens glass — fixed at your door.",
   },
@@ -59,6 +80,7 @@ export const services: Service[] = [
     ticketCode: "SPK-06",
     startingPrice: 449,
     turnaround: "30 min",
+    icon: Mic,
     description:
       "Muffled calls, no sound, or a mic the other end can't hear — diagnosed and resolved on site.",
   },
@@ -68,6 +90,7 @@ export const services: Service[] = [
     ticketCode: "WTR-07",
     startingPrice: 499,
     turnaround: "Diagnosis on site",
+    icon: Droplets,
     description:
       "Dropped in water? Don't power it on. Free diagnosis, transparent quote before any repair.",
   },
@@ -77,18 +100,23 @@ export const services: Service[] = [
     ticketCode: "SFT-08",
     startingPrice: 299,
     turnaround: "20 min",
+    icon: Cpu,
     description:
       "Boot loops, frozen screens, slow performance, or update failures — sorted without losing your data.",
   },
 ];
 
+/* =========================
+   BRANDS
+========================= */
+
 export type Brand = {
   slug: string;
   name: string;
   image: string;
-  };
-  
-  export const brands: Brand[] = [
+};
+
+export const brands: Brand[] = [
   { slug: "apple", name: "Apple", image: "/images/brands/apple.png" },
   { slug: "samsung", name: "Samsung", image: "/images/brands/samsung.png" },
   { slug: "xiaomi", name: "Xiaomi", image: "/images/brands/xiaomi.png" },
@@ -104,193 +132,189 @@ export type Brand = {
   { slug: "nokia", name: "Nokia", image: "/images/brands/nokia.png" },
   { slug: "honor", name: "Honor", image: "/images/brands/honor.png" },
   { slug: "sony", name: "Sony", image: "/images/brands/sony.png" },
-  { slug: "infinix", name: "Infinix"  , image: "/images/brands/infinix.png" },
-  { slug: "tecno", name: "Tecno"  , image: "/images/brands/tecno.png" },
-  { slug: "poco", name: "Poco", image: "/images/brands/poco.png" }
-  ];
-  
-  export const phoneModels: Record<string, string[]> = {
-  Apple: [
-  "iPhone 16 Pro Max",
-  "iPhone 16 Pro",
-  "iPhone 16 Plus",
-  "iPhone 16",
-  "iPhone 15 Pro Max",
-  "iPhone 15 Pro",
-  "iPhone 15 Plus",
-  "iPhone 15",
-  "iPhone 14 Pro Max",
-  "iPhone 14 Pro",
-  "iPhone 14 Plus",
-  "iPhone 14",
-  "iPhone 13 Pro Max",
-  "iPhone 13 Pro",
-  "iPhone 13",
-  "iPhone 12",
-  "iPhone 11",
-  "Other",
-  ],
-  
-  Samsung: [
-  "Galaxy S25 Ultra",
-  "Galaxy S25+",
-  "Galaxy S25",
-  "Galaxy S24 Ultra",
-  "Galaxy S24+",
-  "Galaxy S24",
-  "Galaxy S23 Ultra",
-  "Galaxy S23",
-  "Galaxy A56",
-  "Galaxy A55",
-  "Galaxy A35",
-  "Galaxy M55",
-  "Galaxy M35",
-  "Other",
-  ],
-  
-  Xiaomi: [
-  "Xiaomi 15",
-  "Xiaomi 14",
-  "Redmi Note 14 Pro+",
-  "Redmi Note 14 Pro",
-  "Redmi Note 14",
-  "Redmi Note 13",
-  "Poco F7",
-  "Poco X7 Pro",
-  "Poco X7",
-  "Other",
-  ],
-  
-  OnePlus: [
-  "OnePlus 13",
-  "OnePlus 12",
-  "OnePlus 11",
-  "Nord 4",
-  "Nord CE 4",
-  "Nord CE 3",
-  "Other",
-  ],
-  
-  Vivo: [
-  "V50",
-  "V40",
-  "V30",
-  "T4",
-  "T3",
-  "Y300",
-  "Y200",
-  "Other",
-  ],
-  
-  Oppo: [
-  "Find X8",
-  "Find X8 Pro",
-  "Reno 14",
-  "Reno 13",
-  "Reno 12",
-  "A5",
-  "A3",
-  "Other",
-  ],
-  
-  Realme: [
-  "GT 7",
-  "GT 6",
-  "Realme 14 Pro+",
-  "Realme 14 Pro",
-  "Realme 13 Pro+",
-  "Narzo 80",
-  "Narzo 70",
-  "Other",
-  ],
-  
-  Motorola: [
-  "Edge 60 Pro",
-  "Edge 60",
-  "Edge 50 Pro",
-  "Moto G85",
-  "Moto G64",
-  "Moto G54",
-  "Other",
-  ],
-  
-  Google: [
-  "Pixel 9 Pro XL",
-  "Pixel 9 Pro",
-  "Pixel 9",
-  "Pixel 8 Pro",
-  "Pixel 8",
-  "Pixel 7",
-  "Other",
-  ],
-  
-  Nothing: [
-  "Phone (3)",
-  "Phone (2a)",
-  "Phone (2)",
-  "CMF Phone 2 Pro",
-  "CMF Phone 1",
-  "Other",
-  ],
-  
-  iQOO: [
-  "iQOO 13",
-  "iQOO Neo 10",
-  "iQOO Neo 9",
-  "Z10",
-  "Z9",
-  "Other",
-  ],
-  
-  Asus: [
-  "ROG Phone 9",
-  "ROG Phone 8",
-  "Zenfone 11",
-  "Other",
-  ],
-  
-  Nokia: [
-  "G42",
-  "G60",
-  "XR21",
-  "Other",
-  ],
-  
-  Honor: [
-  "Magic 7 Pro",
-  "Magic 6 Pro",
-  "Honor 200",
-  "Other",
-  ],
-  
-  Sony: [
-  "Xperia 1 VI",
-  "Xperia 5 V",
-  "Other",
-  ],
-  
-  Infinix: [
-  "GT 30 Pro",
-  "Note 50",
-  "Hot 50",
-  "Other",
-  ],
-  
-  Tecno: [
-  "Camon 40",
-  "Pova 7",
-  "Spark 30",
-  "Other",
-  ],
-  
-  Lava: [
-  "Agni 3",
-  "Blaze Series",
-  "Storm Series",
-  "Other",
-  ],
-  };
-  
+  { slug: "infinix", name: "Infinix", image: "/images/brands/infinix.png" },
+  { slug: "tecno", name: "Tecno", image: "/images/brands/tecno.png" },
+  { slug: "poco", name: "Poco", image: "/images/brands/poco.png" },
+];
+
+/* =========================
+   PHONE MODELS
+========================= */
+
+export const phoneModels: Record<string, string[]> = {
+Apple: [
+"iPhone 16 Pro Max",
+"iPhone 16 Pro",
+"iPhone 16 Plus",
+"iPhone 16",
+"iPhone 15 Pro Max",
+"iPhone 15 Pro",
+"iPhone 15 Plus",
+"iPhone 15",
+"iPhone 14 Pro",
+"iPhone 14",
+"iPhone 13",
+"iPhone 12",
+"iPhone 11",
+"Other",
+],
+
+Samsung: [
+"Galaxy S25 Ultra",
+"Galaxy S25+",
+"Galaxy S25",
+"Galaxy S24 Ultra",
+"Galaxy S24",
+"Galaxy S23",
+"Galaxy A56",
+"Galaxy A55",
+"Galaxy M56",
+"Galaxy M55",
+"Other",
+],
+
+Xiaomi: [
+"Xiaomi 15 Ultra",
+"Xiaomi 15",
+"Xiaomi 14",
+"Redmi Note 14 Pro+",
+"Redmi Note 14 Pro",
+"Redmi Note 14",
+"Other",
+],
+
+OnePlus: [
+"OnePlus 13",
+"OnePlus 12",
+"OnePlus 11",
+"Nord 5",
+"Nord 4",
+"Nord CE 4",
+"Other",
+],
+
+Vivo: [
+"X200 Pro",
+"X100",
+"V50",
+"V40",
+"T4",
+"Y200",
+"Other",
+],
+
+Oppo: [
+"Find X8 Pro",
+"Find X8",
+"Reno 14 Pro",
+"Reno 14",
+"A5",
+"Other",
+],
+
+Realme: [
+"GT 7",
+"GT 6",
+"Realme 14 Pro+",
+"Realme 14 Pro",
+"Narzo 80",
+"Other",
+],
+
+Motorola: [
+"Edge 60 Pro",
+"Edge 50 Ultra",
+"Moto G85",
+"Moto G64",
+"Other",
+],
+
+Google: [
+"Pixel 9 Pro XL",
+"Pixel 9 Pro",
+"Pixel 9",
+"Pixel 8 Pro",
+"Pixel 8",
+"Pixel 7",
+"Other",
+],
+
+Nothing: [
+"Phone (3)",
+"Phone (2a)",
+"Phone (2)",
+"CMF Phone 2 Pro",
+"CMF Phone 1",
+"Other",
+],
+
+iQOO: [
+"iQOO 13",
+"Neo 10",
+"Neo 9",
+"Z9",
+"Other",
+],
+
+Asus: [
+"ROG Phone 9",
+"ROG Phone 8",
+"Zenfone 11",
+"Other",
+],
+
+Nokia: [
+"XR21",
+"G60",
+"G42",
+"Other",
+],
+
+Honor: [
+"Magic 7 Pro",
+"Magic 6 Pro",
+"Honor 200",
+"Honor X9c",
+"Other",
+],
+
+Sony: [
+"Xperia 1 VI",
+"Xperia 5 V",
+"Xperia 10 VI",
+"Other",
+],
+
+Infinix: [
+"GT 30 Pro",
+"Note 50",
+"Hot 50",
+"Zero 40",
+"Other",
+],
+
+Tecno: [
+"Camon 40",
+"Camon 30",
+"Pova 7",
+"Spark 30",
+"Other",
+],
+
+Poco: [
+"Poco F7 Ultra",
+"Poco F7",
+"Poco X7 Pro",
+"Poco X7",
+"Poco M7",
+"Other",
+],
+};
+
+
+/* =========================
+   AREAS
+========================= */
 
 export type Area = {
   slug: string;
@@ -306,7 +330,10 @@ export const areas: Area[] = [
   { slug: "manewada", name: "Manewada" },
 ];
 
-// Placeholder contact details — swap with real business info once available.
+/* =========================
+   CONTACT
+========================= */
+
 export const contact = {
   phoneDisplay: "+91 90000 00000",
   phoneHref: "tel:+919000000000",

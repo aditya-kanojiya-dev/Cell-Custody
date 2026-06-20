@@ -10,9 +10,9 @@ import logo from "@/public/images/Logo.jpg";
 
 const navLinks = [
   { href: "/", label: "Home" },
-{ href: "/#services", label: "Services" },
-{ href: "/pricing", label: "Pricing" },
-{ href: "/#how-it-works", label: "How It Works" },
+{ href: "/services", label: "Services" },
+{ href: "/howitworks", label: "How It Works" },
+{ href: "/#reviews", label: "Reviews" },
 { href: "/contact", label: "Contact" },
 ];
 

@@ -1,7 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { services, areas, brands, phoneModels, contact } from "@/lib/data";
+import { motion } from "framer-motion";
+import {
+  services,
+  areas,
+  brands,
+  phoneModels,
+  contact,
+} from "@/lib/data";
 
 const timeSlots = [
   "10:00 AM – 12:00 PM",
@@ -11,20 +18,49 @@ const timeSlots = [
   "6:00 PM – 8:00 PM",
 ];
 
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const reveal = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+  },
+
+  show: {
+    opacity: 1,
+    y: 0,
+
+    transition: {
+      duration: 0.55,
+    },
+  },
+};
+
 export default function BookingForm() {
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedDevice, setSelectedDevice] = useState("");
   const [devices, setDevices] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // Update devices dropdown list when brand changes
   useEffect(() => {
     if (selectedBrand) {
-      // Find the brand name based on the slug or name
-      const brandObj = brands.find(b => b.slug === selectedBrand || b.name === selectedBrand);
+      const brandObj = brands.find(
+        (b) =>
+          b.slug === selectedBrand ||
+          b.name === selectedBrand
+      );
+
       if (brandObj) {
-        const models = phoneModels[brandObj.name] || [];
-        setDevices(models);
+        setDevices(
+          phoneModels[brandObj.name] || []
+        );
       } else {
         setDevices([]);
       }
@@ -33,26 +69,51 @@ export default function BookingForm() {
     }
   }, [selectedBrand]);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(
+    e: React.FormEvent<HTMLFormElement>
+  ) {
     e.preventDefault();
+
     setLoading(true);
 
     try {
-      const formData = new FormData(e.currentTarget);
-      const name = formData.get("name")?.toString() || "";
-      const phone = formData.get("phone")?.toString() || "";
-      const issue = formData.get("issue")?.toString() || "";
-      const area = formData.get("area")?.toString() || "";
-      const address = formData.get("address")?.toString() || "";
-      const slot = formData.get("slot")?.toString() || "";
-      const date = formData.get("date")?.toString() || "";
-      const notes = formData.get("notes")?.toString() || "";
+      const formData = new FormData(
+        e.currentTarget
+      );
 
-      // Find brand display name
-      const brandObj = brands.find(b => b.slug === selectedBrand || b.name === selectedBrand);
-      const brandName = brandObj ? brandObj.name : selectedBrand;
+      const name =
+        formData.get("name")?.toString() || "";
 
-      // Construct pre-filled WhatsApp message
+      const phone =
+        formData.get("phone")?.toString() || "";
+
+      const issue =
+        formData.get("issue")?.toString() || "";
+
+      const area =
+        formData.get("area")?.toString() || "";
+
+      const address =
+        formData.get("address")?.toString() || "";
+
+      const slot =
+        formData.get("slot")?.toString() || "";
+
+      const date =
+        formData.get("date")?.toString() || "";
+
+      const notes =
+        formData.get("notes")?.toString() || "";
+
+      const brandObj = brands.find(
+        (b) =>
+          b.slug === selectedBrand ||
+          b.name === selectedBrand
+      );
+
+      const brandName =
+        brandObj?.name || selectedBrand;
+
       const message = `Hi Cell Custody,
 I would like to book a doorstep mobile repair.
 
@@ -66,226 +127,274 @@ Preferred Date: ${date}
 Preferred Slot: ${slot}
 Notes: ${notes}`;
 
-      const encoded = encodeURIComponent(message);
-      
-      // WhatsApp redirect link using the number from lib/data.ts
-      // (keeps booking fully frontend + direct WhatsApp message)
-      const whatsappUrl = `${contact.whatsappHref}&text=${encoded}`;
-
-      
-      alert("Redirecting to WhatsApp to complete your booking...");
-      window.open(whatsappUrl, "_blank");
+      window.open(
+        `${contact.whatsappHref}&text=${encodeURIComponent(
+          message
+        )}`,
+        "_blank"
+      );
 
       e.currentTarget.reset();
+
       setSelectedBrand("");
       setSelectedDevice("");
-    } catch (error) {
-      console.error(error);
-      alert("Failed to prepare booking redirect");
+
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Full Name" htmlFor="name">
+    <motion.form
+      onSubmit={handleSubmit}
+      initial="hidden"
+      whileInView="show"
+      viewport={{
+        once: true,
+        amount: 0.1,
+      }}
+      variants={container}
+      className="space-y-5"
+    >
+      <motion.div
+        variants={reveal}
+        className="grid gap-5 sm:grid-cols-2"
+      >
+        <Field label="Full Name">
           <input
-            id="name"
             required
             name="name"
-            title="Please enter your full name"
-            aria-label="Full Name"
-            type="text"
+            title="Your Name"
+            aria-label="Your Name"
             placeholder="Your Name"
             className="input"
           />
         </Field>
 
-        <Field label="Phone Number" htmlFor="phone">
+        <Field label="Phone Number">
           <input
-            id="phone"
             required
             name="phone"
-            title="Please enter your phone number"
-            aria-label="Phone Number"
-            type="tel"
+            title="Your Phone Number"
+            aria-label="Your Phone Number"
             placeholder="9876543210"
             className="input"
           />
         </Field>
-      </div>
+      </motion.div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Phone Brand" htmlFor="brand">
+      <motion.div
+        variants={reveal}
+        className="grid gap-5 sm:grid-cols-2"
+      >
+        <Field label="Phone Brand">
           <select
-            required
             value={selectedBrand}
+            required
+            title="Select Phone Brand"
+            aria-label="Select Phone Brand"
+            className="input bg-white"
             onChange={(e) => {
-              setSelectedBrand(e.target.value);
+              setSelectedBrand(
+                e.target.value
+              );
               setSelectedDevice("");
             }}
-            className="input bg-white"
-            title="Please select your phone brand"
-            aria-label="Phone Brand"
           >
-            <option value="">Select Brand</option>
+            <option value="">
+              Select Brand
+            </option>
+
             {brands.map((brand) => (
-              <option key={brand.slug} value={brand.slug}>
+              <option
+                key={brand.slug}
+                value={brand.slug}
+              >
                 {brand.name}
               </option>
             ))}
           </select>
         </Field>
 
-        <Field label="Phone Model" htmlFor="model">
+        <Field label="Phone Model">
           <select
             required
-            value={selectedDevice}
+            name="device"
+            title="Select Phone Model"
+            aria-label="Select Phone Model"
             disabled={!selectedBrand}
-            onChange={(e) => setSelectedDevice(e.target.value)}
-            title="Please select your device"
-            aria-label="Phone Model"
+            value={selectedDevice}
             className="input bg-white"
+            onChange={(e) =>
+              setSelectedDevice(
+                e.target.value
+              )
+            }
           >
-            <option value="">Select Device</option>
+            <option value="">
+              Select Device
+            </option>
+
             {devices.map((device) => (
-              <option key={device} value={device}>
+              <option
+                key={device}
+                value={device}
+              >
                 {device}
               </option>
             ))}
           </select>
         </Field>
-      </div>
+      </motion.div>
 
-      <Field label="Repair Needed" htmlFor="issue">
-        <select
-          id="issue"
-          name="issue"
-          required
-          className="input bg-white"
-          title="Please select the repair type"
-          aria-label="Repair Needed"
-        >
-          <option value="">Select Repair Type</option>
-          {services.map((service) => (
-            <option key={service.slug} value={service.name}>
-              {service.name}
-            </option>
-          ))}
-          <option value="Other">Other / Not Sure</option>
-        </select>
-      </Field>
-
-      <Field label="Area" htmlFor="area">
-        <select
-          id="area"
-          name="area"
-          required
-          className="input bg-white"
-          title="Please select your area"
-          aria-label="Area"
-        >
-          <option value="">Select Area</option>
-          {areas.map((area) => (
-            <option key={area.slug} value={area.name}>
-              {area.name}
-            </option>
-          ))}
-        </select>
-      </Field>
-
-      <Field label="Address" htmlFor="address">
-        <textarea
-          id="address"
-          name="address"
-          title="Please enter your address"
-          aria-label="Address"
-          required
-          rows={3}
-          placeholder="House number, street, landmark"
-          className="input min-h-[100px]"
-        />
-      </Field>
-
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Preferred Date" htmlFor="date">
-          <input
-            id="date"
-            type="date"
-            name="date"
-            title="Please select a date"
-            aria-label="Preferred Date"
+      <motion.div variants={reveal}>
+        <Field label="Repair Needed">
+          <select
             required
+            name="issue"
+            title="Select Repair"
+            aria-label="Select Repair"
+            className="input bg-white"
+          >
+            <option value="">
+              Select Repair
+            </option>
+
+            {services.map((s) => (
+              <option
+                key={s.slug}
+                value={s.name}
+              >
+                {s.name}
+              </option>
+            ))}
+
+            <option>
+              Other / Not Sure
+            </option>
+          </select>
+        </Field>
+      </motion.div>
+
+      <motion.div variants={reveal}>
+        <Field label="Area">
+          <select
+            required
+            name="area"
+            title="Select Area"
+            aria-label="Select Area"
+            className="input bg-white"
+          >
+            <option value="">
+              Select Area
+            </option>
+
+            {areas.map((a) => (
+              <option
+                key={a.slug}
+                value={a.name}
+              >
+                {a.name}
+              </option>
+            ))}
+          </select>
+        </Field>
+      </motion.div>
+
+      <motion.div variants={reveal}>
+        <Field label="Address">
+          <textarea
+            rows={3}
+            required
+            name="address"
+            title="Your Address"
+            aria-label="Your Address"
+            placeholder="Your Address"
+            className="input min-h-[100px]"
+          />
+        </Field>
+      </motion.div>
+
+      <motion.div
+        variants={reveal}
+        className="grid gap-5 sm:grid-cols-2"
+      >
+        <Field label="Preferred Date">
+          <input
+            type="date"
+            required
+            name="date"
+            title="Select Preferred Date"
+            aria-label="Select Preferred Date"
             className="input"
           />
         </Field>
 
-        <Field label="Preferred Time Slot" htmlFor="slot">
+        <Field label="Preferred Time Slot">
           <select
-            id="slot"
-            name="slot"
-            title="Please select a time slot"
-            aria-label="Preferred Time Slot"
             required
+            name="slot"
+            title="Select Preferred Time Slot"
+            aria-label="Select Preferred Time Slot"
             className="input bg-white"
           >
-            <option value="">Select Slot</option>
+            <option value="">
+              Select Slot
+            </option>
+
             {timeSlots.map((slot) => (
-              <option key={slot} value={slot}>
+              <option key={slot}>
                 {slot}
               </option>
             ))}
           </select>
         </Field>
-      </div>
+      </motion.div>
 
-      <Field label="Additional Notes" htmlFor="notes">
-        <textarea
-          id="notes"
-          name="notes"
-          title="Please enter any additional notes"
-          aria-label="Additional Notes"
-          required
-          rows={3}
-          placeholder="Anything else we should know?"
-          className="input min-h-[90px]"
-        />
-      </Field>
+      <motion.div variants={reveal}>
+        <Field label="Additional Notes">
+          <textarea
+            rows={3}
+            required
+            name="notes"
+            title="Additional Notes"
+            aria-label="Additional Notes"
+            className="input min-h-[90px]"
+          />
+        </Field>
+      </motion.div>
 
-      <button
-        type="submit"
-        disabled={loading}
-        className="w-full rounded-xl bg-yellow-400 px-6 py-4 text-sm font-semibold text-black transition-all duration-300 hover:bg-black hover:text-white hover:shadow-xl disabled:opacity-50"
-      >
-        {loading ? "Redirecting..." : "Book Repair on WhatsApp"}
-      </button>
+      <motion.div variants={reveal}>
+        <button
+          disabled={loading}
+          className="w-full rounded-xl bg-yellow-400 px-6 py-4 font-semibold text-black transition hover:bg-black hover:text-white disabled:opacity-50"
+        >
+          {loading
+            ? "Redirecting..."
+            : "Book Repair on WhatsApp"}
+        </button>
 
-      <p className="text-center text-xs text-gray-500">
-        Your booking will open instantly in WhatsApp.
-      </p>
-    </form>
+        <p className="mt-3 text-center text-xs text-gray-500">
+          Your booking will open instantly in WhatsApp.
+        </p>
+      </motion.div>
+    </motion.form>
   );
 }
 
 function Field({
   label,
-  htmlFor,
   children,
 }: {
   label: string;
-  htmlFor: string;
   children: React.ReactNode;
 }) {
   return (
     <div>
-      <label
-        htmlFor={htmlFor}
-        className="mb-2 block text-xs font-semibold uppercase tracking-wide text-gray-600"
-      >
+      <label className="mb-2 block text-xs font-semibold uppercase tracking-wide text-gray-600">
         {label}
       </label>
+
       {children}
     </div>
   );
