@@ -181,7 +181,7 @@ export default function ServiceAreas() {
           {/* Stats */}
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
-            <Stat icon={<MapPin />} value="20+" label="Coverage Zones" />
+            <Stat icon={<MapPin />} value="25+" label="Coverage Zones" />
             <Stat icon={<Clock3 />} value="30–45m" label="Arrival Time" />
             <Stat icon={<ShieldCheck />} value="500+" label="Repairs" />
             <Stat icon={<ShieldCheck />} value="6 Months" label="Warranty" />

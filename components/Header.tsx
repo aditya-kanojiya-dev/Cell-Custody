@@ -70,6 +70,7 @@ return ( <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/
       <a
         href={contact.whatsappHref}
         target="_blank"
+        aria-label="Chat with us on WhatsApp"
         rel="noopener noreferrer"
         className="flex items-center gap-2 rounded-lg border border-green-200 px-3 py-2 text-sm font-semibold text-green-600 transition hover:bg-green-50"
       >
