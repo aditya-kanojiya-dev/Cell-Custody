@@ -402,10 +402,6 @@ export const areas: Area[] = [
     slug: "nandanvan",
     name: "Nandanvan",
   },
-  {
-    slug: "other",
-    name: "Other"
-  }
 ];
 
 /* =========================
