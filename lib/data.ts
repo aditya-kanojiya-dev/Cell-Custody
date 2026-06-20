@@ -322,12 +322,86 @@ export type Area = {
 };
 
 export const areas: Area[] = [
-  { slug: "sadar", name: "Sadar" },
-  { slug: "dharampeth", name: "Dharampeth" },
-  { slug: "sitabuldi", name: "Sitabuldi" },
-  { slug: "civil-lines", name: "Civil Lines" },
-  { slug: "hingna-road", name: "Hingna Road" },
-  { slug: "manewada", name: "Manewada" },
+  {
+    slug: "dharampeth",
+    name: "Dharampeth",
+  },
+  {
+    slug: "sadar",
+    name: "Sadar",
+  },
+  {
+    slug: "civil-lines",
+    name: "Civil Lines",
+  },
+  {
+    slug: "pratap-nagar",
+    name: "Pratap Nagar",
+  },
+  {
+    slug: "manish-nagar",
+    name: "Manish Nagar",
+  },
+  {
+    slug: "wardha-road",
+    name: "Wardha Road",
+  },
+  {
+    slug: "sitabuldi",
+    name: "Sitabuldi",
+  },
+  {
+    slug: "ramdaspeth",
+    name: "Ramdaspeth",
+  },
+  {
+    slug: "dhantoli",
+    name: "Dhantoli",
+  },
+  {
+    slug: "trimurti-nagar",
+    name: "Trimurti Nagar",
+  },
+  {
+    slug: "bajaj-nagar",
+    name: "Bajaj Nagar",
+  },
+  {
+    slug: "shankar-nagar",
+    name: "Shankar Nagar",
+  },
+  {
+    slug: "mankapur",
+    name: "Mankapur",
+  },
+  {
+    slug: "ajni",
+    name: "Ajni",
+  },
+  {
+    slug: "gandhibagh",
+    name: "Gandhibagh",
+  },
+  {
+    slug: "seminary-hills",
+    name: "Seminary Hills",
+  },
+  {
+    slug: "gokulpeth",
+    name: "Gokulpeth",
+  },
+  {
+    slug: "jaitala",
+    name: "Jaitala",
+  },
+  {
+    slug: "jaripatka",
+    name: "Jaripatka",
+  },
+  {
+    slug: "nandanvan",
+    name: "Nandanvan",
+  },
 ];
 
 /* =========================
@@ -335,9 +409,9 @@ export const areas: Area[] = [
 ========================= */
 
 export const contact = {
-  phoneDisplay: "+91 90000 00000",
-  phoneHref: "tel:+919000000000",
-  whatsappHref: "https://wa.me/919000000000",
+  phoneDisplay: "+91 89834 18850",
+  phoneHref: "tel:+918983418850",
+  whatsappHref: "https://wa.me/918983418850",
   email: "book@cellcustody.in",
-  addressLine: "Nagpur, Maharashtra",
+  addressLine: "Cabin No 3, Apartment No 202, second floor, near Basket Ball ground, opposite Mini Punjab, Dharampeth, Nagpur",
 };
