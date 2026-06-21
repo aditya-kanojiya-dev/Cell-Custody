@@ -413,5 +413,5 @@ export const contact = {
   phoneHref: "tel:+918983418850",
   whatsappHref: "https://wa.me/918983418850",
   email: "book@cellcustody.in",
-  addressLine: "Cabin No 3, Apartment No 202, second floor, near Basket Ball ground, opposite Mini Punjab, Dharampeth, Nagpur",
+  addressLine: "Apartment No 202, second floor, near Basket Ball ground, opposite Mini Punjab, Dharampeth, Nagpur",
 };
