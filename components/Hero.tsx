@@ -222,7 +222,7 @@ export default function Hero() {
               </span>
             </div>
 
-            <div className="relative h-56">
+            <div className="relative h-96">
               <Image
                 src="/images/technician.png"
                 alt="Technician"
