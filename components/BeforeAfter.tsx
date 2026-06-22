@@ -10,6 +10,7 @@ const galleries = [
     time: "45 Mins · On-Site",
     img: "/images/screen-replacement.jpeg",
     description: "Shattered display restored with original OLED panel",
+    link: "https://www.instagram.com/p/CEFA4frH__4/",
   },
   {
     title: "Battery Swap",
@@ -17,6 +18,7 @@ const galleries = [
     time: "30 Mins · On-Site",
     img: "/images/battery-swap.jpeg",
     description: "Replaced with genuine high-capacity battery",
+    link: "https://www.instagram.com/p/CGnCVRXlZAA/",
   },
   {
     title: "Camera Glass Fix",
@@ -24,6 +26,7 @@ const galleries = [
     time: "35 Mins · On-Site",
     img: "/images/camera-glass-fix.jpeg",
     description: "Precision replacement of damaged camera lens glass",
+    link: "https://www.instagram.com/p/COp3qr8r-R5/",
   },
 ];
 
