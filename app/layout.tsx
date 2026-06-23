@@ -47,7 +47,7 @@ export const metadata: Metadata = {
       "Instant doorstep mobile repair in Nagpur. Lowest prices, guaranteed repair, technician at your door.",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.png",
   },
 };
 
