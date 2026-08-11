@@ -263,6 +263,10 @@ Notes: ${notes}`;
               </option>
             ))}
 
+            <option value="Tempered Glass">
+              Tempered Glass
+            </option>
+
             <option value="Other / Not Sure">
               Other / Not Sure
             </option>
