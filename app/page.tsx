@@ -6,6 +6,7 @@ import WhyUs from "@/components/WhyUs";
 import HowItWorks from "@/components/HowItWorks";
 import BeforeAfter from "@/components/BeforeAfter";
 import WarrantyBanner from "@/components/WarrantyBanner";
+import TemperedGlassBanner from "@/components/TemperedGlassBanner";
 import Testimonials from "@/components/Testimonials";
 import ServiceAreas from "@/components/ServiceAreas";
 import FAQ from "@/components/FAQ";
@@ -15,6 +16,7 @@ export default function Home() {
     <main>
       <Hero />
       <StatsStrip />
+      <TemperedGlassBanner />
       <BrandStrip />
       <ServiceTicketList />
       <WhyUs />
