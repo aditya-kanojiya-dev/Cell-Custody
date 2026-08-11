@@ -3,6 +3,10 @@
 import { useEffect, useState } from "react";
 import { brands, phoneModels, areas, contact } from "@/lib/data";
 
+const tgBrands = brands.filter((b) =>
+  ["apple", "samsung", "oneplus"].includes(b.slug)
+);
+
 const timeSlots = [
   "10:00 AM – 12:00 PM",
   "12:00 PM – 2:00 PM",
@@ -98,11 +102,11 @@ Preferred Slot: ${slot}`;
             }}
           >
             <option value="">Select Brand</option>
-            {brands.map((brand) => (
-              <option key={brand.slug} value={brand.slug}>
-                {brand.name}
-              </option>
-            ))}
+          {tgBrands.map((brand) => (
+            <option key={brand.slug} value={brand.slug}>
+              {brand.name}
+            </option>
+          ))}
           </select>
         </Field>
         <Field label="Phone Model">
