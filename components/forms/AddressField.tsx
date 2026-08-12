@@ -11,6 +11,31 @@ type Props = {
   rows?: number;
 };
 
+type NominatimAddress = {
+  house_number?: string;
+  road?: string;
+  suburb?: string;
+  city_district?: string;
+  town?: string;
+  village?: string;
+  city?: string;
+  state?: string;
+};
+
+// Build a short, specific address from structured geocoder parts instead of
+// Nominatim's long display_name ("Road, Suburb, City, State").
+function cleanAddress(a?: NominatimAddress) {
+  if (!a) return "";
+  const line1 = [a.house_number, a.road].filter(Boolean).join(" ");
+  const line2 = [
+    a.suburb || a.city_district || a.town || a.village,
+    a.city || a.state,
+  ]
+    .filter(Boolean)
+    .join(", ");
+  return [line1, line2].filter(Boolean).join(", ");
+}
+
 export default function AddressField({
   label,
   name,
@@ -21,8 +46,8 @@ export default function AddressField({
   const [value, setValue] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
 
-  // ponytail: reverse geocode via Nominatim (free, no key). Swap for a paid
-  // geocoder if volume grows or accuracy/rate limits bite.
+  // ponytail: reverse geocode via Nominatim (free, no key). Swap for Google
+  // Places autocomplete if you want search-as-you-type — needs an API key.
   function useMyLocation() {
     if (!("geolocation" in navigator)) {
       setStatus("error");
@@ -39,7 +64,7 @@ export default function AddressField({
             `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`
           );
           const data = await res.json();
-          setValue(data.display_name || "");
+          setValue(cleanAddress(data.address) || data.display_name || "");
         } catch {
           setStatus("error");
         } finally {
