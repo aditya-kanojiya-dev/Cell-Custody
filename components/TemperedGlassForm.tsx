@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { brands, phoneModels, areas, contact } from "@/lib/data";
+import AddressField from "@/components/forms/AddressField";
+import DateSelect from "@/components/forms/DateSelect";
 
 const tgBrands = brands.filter((b) =>
   ["apple", "samsung", "oneplus"].includes(b.slug)
@@ -160,20 +162,10 @@ Preferred Slot: ${slot}`;
         </Field>
       )}
 
-      <Field label="Address">
-        <textarea
-          rows={2}
-          required
-          name="address"
-          placeholder="Your Address"
-          className="input"
-        />
-      </Field>
+      <AddressField label="Address" name="address" required rows={2} />
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Preferred Date">
-          <input type="date" required name="date" className="input" />
-        </Field>
+        <DateSelect label="Preferred Date" name="date" required />
         <Field label="Preferred Time Slot">
           <select required name="slot" className="input bg-white">
             <option value="">Select Slot</option>

@@ -9,6 +9,8 @@ import {
   phoneModels,
   contact,
 } from "@/lib/data";
+import AddressField from "@/components/forms/AddressField";
+import DateSelect from "@/components/forms/DateSelect";
 
 const timeSlots = [
   "10:00 AM – 12:00 PM",
@@ -335,15 +337,12 @@ Notes: ${notes}`;
 
       {/* Address */}
       <motion.div variants={reveal}>
-        <Field label="Address">
-          <textarea
-            rows={3}
-            required
-            name="address"
-            placeholder="Your Address"
-            className="input min-h-[100px]"
-          />
-        </Field>
+        <AddressField
+          label="Address"
+          name="address"
+          required
+          rows={3}
+        />
       </motion.div>
 
       {/* Date + Slot */}
@@ -351,14 +350,11 @@ Notes: ${notes}`;
         variants={reveal}
         className="grid gap-5 sm:grid-cols-2"
       >
-        <Field label="Preferred Date">
-          <input
-            type="date"
-            required
-            name="date"
-            className="input"
-          />
-        </Field>
+        <DateSelect
+          label="Preferred Date"
+          name="date"
+          required
+        />
 
         <Field label="Preferred Time Slot">
           <select
