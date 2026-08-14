@@ -24,10 +24,11 @@ export default function TemperedGlassBanner() {
             exit={{ opacity: 0 }}
           >
             <Image
-              src="/images/banner.jpeg"
+              src="/images/banner.webp"
               alt="Book your repair at Cell Custody"
-              width={1600}
-              height={900}
+              width={1024}
+              height={576}
+              priority
               className="h-auto w-full rounded-2xl object-cover shadow-lg"
             />
           </motion.button>
