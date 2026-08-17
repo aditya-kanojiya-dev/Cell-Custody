@@ -10,6 +10,8 @@ import {
   PlugZap,
   Wrench,
   ArrowRight,
+  Cpu,
+  HardDrive,
 } from "lucide-react";
 
 import { fadeUp, staggerChildren } from "@/lib/motion";
@@ -51,11 +53,39 @@ const serviceCards = [
     href: "/services/camera-repair",
   },
   {
-    title: "Software Issues",
+    title: "Software Repair",
     description:
       "Boot loops, updates, performance and OS troubleshooting.",
     icon: Wrench,
     href: "/services/software-issues",
+  },
+  {
+    title: "iCloud & Activation Lock",
+    description:
+      "Apple device lock removal with ownership verification.",
+    icon: Smartphone,
+    href: "/services/icloud-activation-lock",
+  },
+  {
+    title: "Data Transfer",
+    description:
+      "Secure data migration between Android and iPhone.",
+    icon: HardDrive,
+    href: "/services/data-transfer",
+  },
+  {
+    title: "iPhone Flashing",
+    description:
+      "Official iOS restoration and software troubleshooting.",
+    icon: Cpu,
+    href: "/services/iphone-flashing",
+  },
+  {
+    title: "iPhone Storage Upgrade",
+    description:
+      "Increase your iPhone's internal storage capacity.",
+    icon: HardDrive,
+    href: "/services/iphone-storage-upgrade",
   },
 ];
 

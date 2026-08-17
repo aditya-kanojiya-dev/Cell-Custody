@@ -5,6 +5,7 @@ import {
   ArrowRight,
   CheckCircle2,
   Clock3,
+  ChevronDown,
 } from "lucide-react";
 
 type Params = Promise<{ slug: string }>;
@@ -105,11 +106,26 @@ export default async function ServicePage({
         </div>
       </section>
 
+      {/* Details */}
+      {service.details && (
+        <section className="border-b border-line">
+          <div className="mx-auto max-w-5xl px-5 py-12 md:px-8 md:py-16">
+            <h2 className="font-display text-2xl font-bold text-ink">
+              About This Repair
+            </h2>
+
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate">
+              {service.details}
+            </p>
+          </div>
+        </section>
+      )}
+
       {/* Included */}
       <section className="border-b border-line bg-line/20">
         <div className="mx-auto max-w-5xl px-5 py-12 md:px-8 md:py-16">
           <h2 className="font-display text-2xl font-bold text-ink">
-            What's Included
+            What&apos;s Included
           </h2>
 
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
@@ -131,6 +147,39 @@ export default async function ServicePage({
           </div>
         </div>
       </section>
+
+      {/* FAQ */}
+      {service.faq.length > 0 && (
+        <section className="border-b border-line">
+          <div className="mx-auto max-w-5xl px-5 py-12 md:px-8 md:py-16">
+            <h2 className="font-display text-2xl font-bold text-ink">
+              Frequently Asked Questions
+            </h2>
+
+            <div className="mt-8 space-y-4">
+              {service.faq.map((item) => (
+                <details
+                  key={item.question}
+                  className="group overflow-hidden rounded-2xl border border-line bg-white"
+                >
+                  <summary className="flex cursor-pointer items-center justify-between px-6 py-5 text-left font-semibold text-ink transition hover:bg-line/20">
+                    {item.question}
+                    <ChevronDown
+                      size={18}
+                      className="flex-shrink-0 transition-transform group-open:rotate-180"
+                    />
+                  </summary>
+                  <div className="px-6 pb-6">
+                    <p className="leading-relaxed text-slate">
+                      {item.answer}
+                    </p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Brands */}
       <section className="border-b border-line">
