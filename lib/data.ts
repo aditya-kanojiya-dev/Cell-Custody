@@ -310,7 +310,6 @@ export const services: Service[] = [
       "Securely transfer your important data between devices — Android to iPhone, iPhone to Android, or same platform.",
     details:
       "Moving to a new phone? We help you transfer contacts, photos, videos, documents, and other supported data between devices. We handle cross-platform transfers including Android to iPhone (iOS), iPhone to Android, and same-platform transfers. The technician ensures your data is moved securely and you can verify everything on the new device before we leave.",
-    applicableBrands: ["apple"],
     faq: [
       {
         question: "Can you transfer data from Android to iPhone?",
