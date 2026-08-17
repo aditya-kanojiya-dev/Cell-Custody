@@ -8,7 +8,7 @@ export default function NotFound() {
         <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-ink">
           <Wrench size={24} className="text-amber" />
         </div>
-        <p className="ticket-num text-xs uppercase tracking-[0.2em] text-amber-text">
+        <p className="ticket-num text-xs uppercase tracking-[0.2em] text-amber">
           Error 404
         </p>
         <h1 className="mt-2 font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">

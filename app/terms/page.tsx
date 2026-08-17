@@ -7,7 +7,7 @@ export default function TermsPage() {
   return (
     <main className="bg-paper">
       <div className="mx-auto max-w-3xl px-5 py-14 md:px-8 md:py-20">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-yellow-400-text">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-yellow-400">
           Legal
         </p>
         <h1 className="mt-2 font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">
@@ -99,7 +99,7 @@ export default function TermsPage() {
             <h2 className="font-display text-lg font-bold text-ink">8. Contact</h2>
             <p className="mt-2">
               Questions about these terms can be sent to{" "}
-              <a href="mailto:book@cellcustody.in" className="font-semibold text-yellow-400-text">
+              <a href="mailto:book@cellcustody.in" className="font-semibold text-yellow-400">
                 book@cellcustody.in
               </a>
               .

@@ -70,7 +70,7 @@ export default function HowItWorksPage() {
     <main className="bg-paper">
       <section className="border-b border-line">
         <div className="mx-auto max-w-4xl px-5 py-14 text-center md:px-8 md:py-20">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-yellow-400-text">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-yellow-400">
             How It Works
           </p>
           <h1 className="mt-2 font-display text-3xl font-bold tracking-tight text-ink md:text-5xl">
@@ -114,7 +114,7 @@ export default function HowItWorksPage() {
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
             {principles.map((p) => (
               <div key={p.title}>
-                <p.icon size={22} className="text-yellow-400-text" />
+                <p.icon size={22} className="text-yellow-400" />
                 <h3 className="mt-3 font-display text-base font-bold text-ink">
                   {p.title}
                 </h3>

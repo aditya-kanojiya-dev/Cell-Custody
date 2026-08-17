@@ -34,7 +34,7 @@ const serviceCards = [
     description:
       "Deep cleaning, diagnostics and board-level recovery.",
     icon: Droplets,
-    href: "/services/water-damage",
+    href: "/services/water-damage-repair",
   },
   {
     title: "Charging Port",
@@ -55,7 +55,7 @@ const serviceCards = [
     description:
       "Boot loops, updates, performance and OS troubleshooting.",
     icon: Wrench,
-    href: "/services/software-repair",
+    href: "/services/software-issues",
   },
 ];
 

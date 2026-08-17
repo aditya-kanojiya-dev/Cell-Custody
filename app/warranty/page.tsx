@@ -23,7 +23,7 @@ export default function WarrantyPage() {
     <main className="bg-paper">
       <section className="border-b border-line">
         <div className="mx-auto max-w-3xl px-5 py-14 md:px-8 md:py-20">
-          <div className="flex items-center gap-2 text-yellow-400-text">
+          <div className="flex items-center gap-2 text-yellow-400">
             <ShieldCheck size={18} />
             <p className="text-xs font-semibold uppercase tracking-[0.2em]">
               Warranty
