@@ -185,25 +185,33 @@ export default async function ServicePage({
       <section className="border-b border-line">
         <div className="mx-auto max-w-5xl px-5 py-12 md:px-8 md:py-16">
           <h2 className="font-display text-2xl font-bold text-ink">
-            Available for Every Major Brand
+            {service.applicableBrands
+              ? "Available for Apple Devices"
+              : "Available for Every Major Brand"}
           </h2>
 
           <p className="mt-3 max-w-2xl text-slate">
-            Our technicians repair smartphones from all
-            leading brands with doorstep service across
-            Nagpur.
+            {service.applicableBrands
+              ? "Our technicians repair Apple smartphones with doorstep service across Nagpur."
+              : "Our technicians repair smartphones from all leading brands with doorstep service across Nagpur."}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            {brands.map((brand) => (
-              <Link
-                key={brand.slug}
-                href={`/brands/${brand.slug}`}
-                className="rounded-2xl border border-line bg-paper px-5 py-3 text-sm font-medium text-ink transition-all duration-300 hover:border-yellow-400 hover:text-yellow-500"
-              >
-                {brand.name}
-              </Link>
-            ))}
+            {brands
+              .filter(
+                (b) =>
+                  !service.applicableBrands ||
+                  service.applicableBrands.includes(b.slug)
+              )
+              .map((brand) => (
+                <Link
+                  key={brand.slug}
+                  href={`/brands/${brand.slug}`}
+                  className="rounded-2xl border border-line bg-paper px-5 py-3 text-sm font-medium text-ink transition-all duration-300 hover:border-yellow-400 hover:text-yellow-500"
+                >
+                  {brand.name}
+                </Link>
+              ))}
           </div>
         </div>
       </section>

@@ -28,6 +28,7 @@ export type Service = {
   icon: React.ElementType;
   details: string;
   faq: FAQ[];
+  applicableBrands?: string[];
 };
 
 export const services: Service[] = [
@@ -274,6 +275,7 @@ export const services: Service[] = [
       "Locked out of your iPhone due to iCloud Lock or Activation Lock? We help with verification-based unlocking for Apple devices.",
     details:
       "We provide assistance with iCloud Lock, Activation Lock, and Owner Lock issues specifically for Apple devices. This service requires verification of device ownership before any work begins. Bring or have ready your active mobile number linked to the Apple Account, the original purchase bill or invoice, and the original device box. Services are provided only after verifying device ownership and the required documents. We do not bypass locks on stolen or unverified devices.",
+    applicableBrands: ["apple"],
     faq: [
       {
         question: "What documents do I need for iCloud Lock removal?",
@@ -308,6 +310,7 @@ export const services: Service[] = [
       "Securely transfer your important data between devices — Android to iPhone, iPhone to Android, or same platform.",
     details:
       "Moving to a new phone? We help you transfer contacts, photos, videos, documents, and other supported data between devices. We handle cross-platform transfers including Android to iPhone (iOS), iPhone to Android, and same-platform transfers. The technician ensures your data is moved securely and you can verify everything on the new device before we leave.",
+    applicableBrands: ["apple"],
     faq: [
       {
         question: "Can you transfer data from Android to iPhone?",
@@ -337,6 +340,7 @@ export const services: Service[] = [
       "iPhone software flashing and restoration using official Apple software and supported procedures.",
     details:
       "We provide iPhone software flashing and restoration using official Apple software and supported procedures. This includes iOS software restoration, official software installation and updates, and software troubleshooting for iPhones stuck in recovery mode, boot loops, or experiencing persistent software errors. The technician uses verified tools and ensures your device runs the latest compatible iOS version after the process.",
+    applicableBrands: ["apple"],
     faq: [
       {
         question: "Will flashing erase my iPhone data?",
@@ -360,12 +364,13 @@ export const services: Service[] = [
     name: "iPhone Storage Upgrade",
     ticketCode: "APL-12",
     startingPrice: 1499,
-    turnaround: "2–3 Days",
+    turnaround: "2–3 hours",
     icon: Cpu,
     description:
       "Increase your iPhone's storage capacity with a professional storage upgrade. Only available for compatible iOS devices.",
     details:
       "We provide storage upgrades for iOS devices, subject to device compatibility and technical feasibility. This is a hardware-level upgrade that increases your iPhone's internal storage capacity. The process involves backing up your data, replacing the storage module, restoring iOS, and verifying the upgrade. We test the device thoroughly after the upgrade to ensure everything works correctly. Only available for compatible iPhone models — the technician will confirm compatibility before booking.",
+    applicableBrands: ["apple"],
     faq: [
       {
         question: "Which iPhone models support storage upgrades?",
