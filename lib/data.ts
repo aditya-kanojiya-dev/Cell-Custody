@@ -240,7 +240,7 @@ export const services: Service[] = [
     name: "Software Repair",
     ticketCode: "SFT-08",
     startingPrice: 299,
-    turnaround: "20 min",
+    turnaround: "30 Min - 1 Hour",
     icon: Cpu,
     description:
       "Boot loops, frozen screens, slow performance, or update failures — sorted without losing your data.",
@@ -269,7 +269,7 @@ export const services: Service[] = [
     name: "iCloud & Activation Lock",
     ticketCode: "APL-09",
     startingPrice: 999,
-    turnaround: "Same day",
+    turnaround: "2-3 days",
     icon: Smartphone,
     description:
       "Locked out of your iPhone due to iCloud Lock or Activation Lock? We help with verification-based unlocking for Apple devices.",
@@ -290,7 +290,7 @@ export const services: Service[] = [
       {
         question: "How long does the unlocking process take?",
         answer:
-          "It typically takes the same day, depending on verification speed and Apple's processing time.",
+          "It typically takes around 2-3 days, depending on verification speed and Apple's processing time.",
       },
       {
         question: "Will this erase my data?",
@@ -304,7 +304,7 @@ export const services: Service[] = [
     name: "Data Transfer",
     ticketCode: "DTR-10",
     startingPrice: 499,
-    turnaround: "30–60 min",
+    turnaround: "Depending on the Data",
     icon: Smartphone,
     description:
       "Securely transfer your important data between devices — Android to iPhone, iPhone to Android, or same platform.",
@@ -334,7 +334,7 @@ export const services: Service[] = [
     name: "iPhone Flashing & Restoration",
     ticketCode: "APL-11",
     startingPrice: 699,
-    turnaround: "30–45 min",
+    turnaround: "1 Hour",
     icon: Cpu,
     description:
       "iPhone software flashing and restoration using official Apple software and supported procedures.",
@@ -364,7 +364,7 @@ export const services: Service[] = [
     name: "iPhone Storage Upgrade",
     ticketCode: "APL-12",
     startingPrice: 1499,
-    turnaround: "2–3 hours",
+    turnaround: "2–3 Days",
     icon: Cpu,
     description:
       "Increase your iPhone's storage capacity with a professional storage upgrade. Only available for compatible iOS devices.",
